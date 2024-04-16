@@ -95,7 +95,6 @@ variable "ITLT_Owner" {
     ], var.ITLT_Owner)
     error_message = "The ITLT_Owner must be one of the predefined email addresses."
   }
-  }
 }
 
 
