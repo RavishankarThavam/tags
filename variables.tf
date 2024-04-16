@@ -15,26 +15,53 @@ variable "Application" {
 }
 
 variable "Division" {
+  type = string
+  description = "The Division defines the from the IFF BU's "
   default = ""
   nullable = false
 
   validation {
-    condition     = var.Division != ""
-    error_message = "The Division must not be empty."
+    condition     = contains([
+      "Scent",
+      "Nourish",
+      "Health_Biosciences",
+      "Pharma_Solutions",
+      "Shared_Services"
+
+    ], var.Division)
+    error_message = "The Division must be one of the predefined value."
   }
 }
 
 variable "Function" {
+  type = string
+  description = "The Function defines the from the IFF Functions "
   default = ""
   nullable = false
 
   validation {
-    condition     = var.Function != ""
-    error_message = "The Function must not be empty."
+    condition = contains([
+      "Finance",
+      "Information_Technology",
+      "Human_Resources",
+      "IR_CorpComm",
+      "Legal",
+      "Operations",
+      "Research_Development",
+      "Manufacturing",
+      "Quality_Management",
+      "Marketing_Sales",
+      "Procurement",
+      "Plant_Maintenance",
+      "Logistics"
+    ], var.Function)
+    error_message = "The Function must be one of the predefined values."
   }
 }
 
 variable "Environment" {
+  type = string
+  description = "The Environment that the resources are being deployed"
   default = ""
   nullable = false
 
@@ -45,6 +72,8 @@ variable "Environment" {
 }
 
 variable "L1_Technical_Owner" {
+  type = string
+  description = "The L1_Technical_Owner's email address"
   default = ""
   nullable = false
 
@@ -55,6 +84,8 @@ variable "L1_Technical_Owner" {
 }
 
 variable "L2_Technical_Owner" {
+  type = string
+  description = "The L2_Technical_Owner's email address"
   default = ""
   nullable = false
 
@@ -65,6 +96,8 @@ variable "L2_Technical_Owner" {
 }
 
 variable "L3_IT_Owner" {
+  type = string
+  description = "The L3_IT_Owner's email address"
   default = ""
   nullable = false
 
@@ -76,7 +109,7 @@ variable "L3_IT_Owner" {
 
 variable "ITLT_Owner" {
   type = string
-  description = "The owner's email address"
+  description = "The ITLT_Owner's email address"
   
   validation {
     condition = contains([
